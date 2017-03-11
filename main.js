@@ -8,6 +8,8 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+const isWin = /^win/.test(process.platform);
+
 // Puts data into your copy clipboard
 // Works for OSX only
 const pbcopy = (data) => {
@@ -50,8 +52,7 @@ query('Company Name: ')
   const body = `I am writing to express my interest in being a ${position} at ${company}. This role is exciting because it aligns with my passion for designing user experiences and problem solving. Equally appealing is the opportunity to leverage my knowledge of the web development stack and to work with equally driven individuals. ${reel} \n\n My current language of choice is Javascript along with its various components that comprise the full stack spectrum. I am comfortable using React, React Native, Redux, Node, Express, MongoDB, PostgreSQL and I also have experience with Angular, Backbone, and database ORMS. Apart from technological stack, I also value proper communication and am very receptive to feedback. People have told me that I am easy to work with because of my ability to speak on a problem, whether it’s one that I can help with or one I am struggling with myself. I find that my ability to keep an open mind and a willingness to adapt has consistently contributed to my success.\n\nThank you for your time. If you are interested in reciprocating my enthusiasm, please don’t hesitate to leave me an email at wallace.s.luk@gmail.com\n\nRegards,\n \
     Wallace`;
 
-  const isWin = /^win/.test(process.platform);
-  
+
   if(isWin) {
     require('child_process').spawn('clip').stdin.end(header + body);
   } else {
@@ -71,3 +72,4 @@ query('Company Name: ')
 .catch((err) => {
   console.log('Error', err.message);
 });
+
